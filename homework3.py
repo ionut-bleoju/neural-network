@@ -1,6 +1,5 @@
 import numpy as np
 from torchvision.datasets import MNIST
-import matplotlib.pyplot as plt
 
 # Constants
 NUM_INPUT_NEURONS = 784
@@ -53,13 +52,10 @@ def compute_loss(predictions, targets):
     return -np.mean(targets * np.log(predictions) + (1 - targets) * np.log(1 - predictions))
 
 def backpropagation(inputs, hidden_layer_output, output_layer_output, targets, weights_input_to_hidden, weights_hidden_to_output, learning_rate):
-   # Compute the error at the output layer
     output_error = output_layer_output - targets
     
-    # Compute the gradient (delta) at the output layer
     output_delta = output_error * sigmoid_derivative(output_layer_output)
 
-    # Compute the error at the hidden layer
     hidden_error = np.dot(output_delta, weights_hidden_to_output.T)
     
     # Compute the gradient (delta) at the hidden layer
