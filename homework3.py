@@ -48,7 +48,7 @@ def forward_propagation(inputs, weights_input_to_hidden, weights_hidden_to_outpu
 
 def compute_loss(predictions, targets):
     epsilon = 1e-10
-    predictions = np.clip(predictions, epsilon, 1. - epsilon)
+    predictions = np.clip(predictions, epsilon, 1 - epsilon)
     return -np.mean(targets * np.log(predictions) + (1 - targets) * np.log(1 - predictions))
 
 def backpropagation(inputs, hidden_layer_output, output_layer_output, targets, weights_input_to_hidden, weights_hidden_to_output, learning_rate):
